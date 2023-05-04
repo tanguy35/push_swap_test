@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
         image 'silkeh/clang:16'
-        label "linux"
+        label 'linux'
         reuseNode true
     }
   } 
