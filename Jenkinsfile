@@ -5,14 +5,13 @@ pipeline {
                 label 'linux'
             }
         }
-
-          stages {
-                stage('Compile')
-                {
-                  steps {
-                      sh "apt-get install -y make"
-                      sh make
-                    }
-                }
-
+        
+        stages {
+          stage('Compile')
+          {
+            steps {
+                sh 'apt-get install make'
+                sh make
+           }
+        }               
 }
