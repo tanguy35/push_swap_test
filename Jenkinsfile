@@ -1,17 +1,21 @@
 pipeline {
-          agent {
-            docker {
-                image 'silkeh/clang'
-                label 'linux'
-            }
+  agent {
+    docker {
+        image 'silkeh/clang:16'
+        label "linux"
+        reuseNode true
+    }
+  } 
+    stages {
+      stage('Dependencies') {
+        steps {
+            sh "apt-get install -y make"
         }
-        
-        stages {
-          stage('Compile')
-          {
-            steps {
-                sh "apt-get install make"
-                sh make
-           }
-        }               
+      }
+      stage('Compile') {
+        steps {
+            sh make
+        }
+      } 
+    }
 }
