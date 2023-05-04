@@ -1,15 +1,17 @@
 pipeline {
   agent {
     docker {
-        image 'silkeh/clang:latest'
+        image 'silkeh/clang'
         label 'linux'
     }
 }
     
-    stage('Compile') {
+    stages {
+        stage('Compile')
+        {
             steps {
                 sh "apt-get install -y make"
-                sh 'make'
+                sh "make"
             }
         }
 
